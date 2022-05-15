@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #d2eaf1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 12px;
+}
+
+main {
+    background-color: whitesmoke;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+    max-width: 420px;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 20px 0;
+}
+
+.todo-header__date {
+    display: flex;
+}
+
+.todo-header__date>div {
+    margin-right: 10px;
+}
+
+.todo-header__date h4 {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.todo-header__date p {
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.05rem;
+}
+
+.todo-header__date span {
+    font-weight: 300;
+    font-size: 0.85rem;
+    line-height: 0.95rem;
+}
+
+.todo-header__day {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.todo-progress {
+    display: flex;
+    padding: 3rem 20px 1.5rem;
+}
+
+.todo-progress__graph {
+    width: 2rem;
+    height: 2rem;
+    background: #dfdfdf;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.todo-progress__graph::after {
+    content: "";
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    line-height: 1.4rem;
+    background: whitesmoke;
+    border-radius: 50%;
+    margin-top: 0.3rem;
+    margin-left: 0.3rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.todo-progress__graph .circle .circle-mask,
+.todo-progress__graph .circle .fill {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.todo-progress__graph .circle .circle-mask {
+    clip: rect(0px, 2rem, 2rem, 1rem);
+}
+
+.circle-mask .fill {
+    clip: rect(0px, 1rem, 2rem, 0px);
+    background-color: #227ded;
+}
+
+.circle-mask.full,
+.circle .fill {
+    transition: transform ease-in-out 3s;
+    transform: rotate(0deg);
+}
+
+.todo-progress__title h1 {
+    font-size: 1.85rem;
+    line-height: 1.85rem;
+    font-weight: 700;
+}
+
+.todo-progress__title p {
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.todo-divider {
+    height: 1px;
+    background-color: #dfdfdf;
+    width: 80%;
+    margin: 10px 0 10px auto;
+}
+
+.todo-list ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.todo-list__item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.todo-list__item input {
+    position: absolute;
+    left: 15px;
+    opacity: 0;
+}
+
+.todo-list__item input:checked~label {
+    background-color: #ececec;
+}
+
+.todo-list__item input:checked~label p {
+    color: #227ded;
+    text-decoration: line-through;
+}
+
+.todo-list__item label {
+    cursor: pointer;
+    padding: 10px 40px;
+    width: 100%;
+}
+
+.todo-list__item label:hover {
+    background-color: #dfdfdf !important;
+}
+
+.todo-list__item p {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.todo-list__item span {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+.todo-footer {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.todo-footer__add {
+    background-color: #227ded;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 0.75rem;
+    color: whitesmoke;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.todo-footer__add:hover,
+.todo-footer__add:focus {
+    background-color: #d2eaf1;
+    color: black;
+}

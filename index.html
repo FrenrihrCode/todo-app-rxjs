@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="todo">
+        <header class="todo-header">
+            <div class="todo-header__date">
+                <div>
+                    <h4 id="todo-day">12</h4>
+                </div>
+                <div>
+                    <p id="todo-month">Jan</p>
+                    <span id="todo-year">2015</span>
+                </div>
+            </div>
+            <div class="todo-header__day">
+                <p id="todo-weekday">Tuesday</p>
+            </div>
+        </header>
+        <section class="todo-progress">
+            <div class="todo-progress__graph">
+                <div class="circle">
+                    <div class="circle-mask full">
+                        <div class="fill"></div>
+                    </div>
+                    <div class="circle-mask half">
+                        <div class="fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-progress__title">
+                <h1>My Tasks</h1>
+                <p id="todo-count">5 of 8 tasks</p>
+            </div>
+        </section>
+        <div class="todo-divider"></div>
+        <section class="todo-list">
+            <ul id="todo-list">
+            </ul>
+        </section>
+        <div class="todo-divider"></div>
+        <footer class="todo-footer">
+            <button id="todo-add" type="button" title="Add task" class="todo-footer__add">+</button>
+        </footer>
+    </main>
+    <script src="index.js"></script>
+    <script src="todo.js"></script>
+    <noscript>Please activate scripts for use this application.</noscript>
+</body>
+
+</html>
