@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -21,6 +22,10 @@ main {
     width: 100%;
     padding: 20px 0;
     max-width: 420px;
+}
+
+.todo {
+    position: relative;
 }
 
 .todo-header {
@@ -113,8 +118,7 @@ main {
 
 .circle-mask.full,
 .circle .fill {
-    transition: transform ease-in-out 3s;
-    transform: rotate(0deg);
+    transition: transform ease-in-out 1s;
 }
 
 .todo-progress__title h1 {
@@ -184,6 +188,21 @@ main {
     font-size: 0.8rem;
 }
 
+.todo-list__item button {
+    background: url('data:image/svg+xml; utf8, <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 6.002c0-.552-.448-1-1-1h-12.628c-.437 0-.853.191-1.138.523-1.078 1.256-3.811 4.439-4.993 5.816-.16.187-.241.418-.241.65s.08.464.24.651c1.181 1.38 3.915 4.575 4.994 5.836.285.333.701.524 1.14.524h12.626c.552 0 1-.447 1-1 0-2.577 0-9.423 0-12zm-7.991 4.928 1.71-1.711c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .194-.073.385-.219.532l-1.711 1.71 1.728 1.728c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.384-.073-.531-.219l-1.728-1.728-1.728 1.728c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l1.728-1.728-1.788-1.787c-.146-.147-.219-.338-.219-.531 0-.426.346-.75.751-.75.192 0 .384.073.53.219z" fill-rule="nonzero"/></svg>');
+    width: 32px;
+    height: 32px;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.todo-list__item button:hover {
+    opacity: 0.75;
+}
+
 .todo-footer {
     padding: 0 20px;
     display: flex;
@@ -191,7 +210,8 @@ main {
     justify-content: flex-end;
 }
 
-.todo-footer__add {
+.todo-footer__add,
+form button[type="submit"] {
     background-color: #227ded;
     outline: none;
     border: none;
@@ -206,7 +226,56 @@ main {
 }
 
 .todo-footer__add:hover,
-.todo-footer__add:focus {
+.todo-footer__add:focus,
+form button[type="submit"]:hover,
+form button[type="submit"]:focus {
     background-color: #d2eaf1;
     color: black;
+}
+
+.todo-form {
+    background: whitesmoke;
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    z-index: -1;
+    opacity: 0;
+    transition: opacity, bottom 300ms ease-in;
+}
+
+.todo-form.open {
+    bottom: 62px;
+    opacity: 1;
+    z-index: 100;
+}
+
+form input,
+form textarea,
+form select {
+    display: block;
+}
+
+form label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+form label:first-of-type {
+    margin-top: 0;
+}
+
+form button[type="submit"] {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    width: 100%;
 }

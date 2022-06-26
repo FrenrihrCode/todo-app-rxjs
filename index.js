@@ -1,13 +1,57 @@
-const currentDate = new Date()
-const [month, weekday] = currentDate.toLocaleDateString(undefined, { month: 'short', weekday: 'long' }).split(" ")
-const year = currentDate.getFullYear()
-const day = currentDate.getDate()
+import Todo from "./todo.js";
+
+const { range, filter, fromEvent, of } = rxjs;
+
+let todoAddSubscription;
+let todoModalToggle;
+
+const todoForm = document.getElementById("todo-form");
+const taskMessageInput = document.getElementById("task-message");
+const taskTagInput = document.getElementById("task-tag");
+
+const currentDate = new Date();
+const [month, weekday] = currentDate
+  .toLocaleDateString(undefined, { month: "short", weekday: "long" })
+  .split(" ");
+const year = currentDate.getFullYear();
+const day = currentDate.getDate();
 
 const setCurrentDate = () => {
-    document.getElementById("todo-day").innerText = day
-    document.getElementById("todo-year").innerText = year
-    document.getElementById("todo-month").innerText = month
-    document.getElementById("todo-weekday").innerText = weekday
-}
+  document.getElementById("todo-day").innerText = day;
+  document.getElementById("todo-year").innerText = year;
+  document.getElementById("todo-month").innerText = month;
+  document.getElementById("todo-weekday").innerText = weekday;
+};
 
-setCurrentDate()
+const initTodo = () => {
+  const todo = new Todo();
+  setCurrentDate();
+
+  todoModalToggle = fromEvent(
+    document.getElementById("todo-add"),
+    "click"
+  ).subscribe((_) => {
+    todoForm.classList.toggle("open");
+  });
+
+  todoAddSubscription = fromEvent(
+    document.getElementById("todo-form"),
+    "submit"
+  ).subscribe((e) => {
+    e.preventDefault();
+    const message = taskMessageInput.value;
+    const tag = taskTagInput.value;
+    if (message && tag) {
+      todo.addTask({ message, tag });
+      todoForm.classList.toggle("open");
+    }
+  });
+};
+
+const finishTodo = () => {
+  if (todoAddSubscription) {
+    todoAddSubscription.unsubscribe();
+  }
+};
+
+window.onload = initTodo();
