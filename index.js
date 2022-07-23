@@ -5,6 +5,9 @@ const { range, filter, fromEvent, of } = rxjs;
 const todoForm = document.getElementById("todo-form");
 const taskMessageInput = document.getElementById("task-message");
 const taskTagInput = document.getElementById("task-tag");
+/* iframe test */
+const showOnIframe = document.getElementById("show-on-iframe");
+const hideOnIframe = document.getElementById("hide-on-iframe");
 
 const currentDate = new Date();
 const [month, weekday] = currentDate
@@ -51,6 +54,11 @@ const initTodo = () => {
     console.log("Enviando mensaje");
     window.parent.postMessage("Hello World from iframe", "*");
   });
+
+  if (window.self !== window.top) {
+    showOnIframe.style.display = "flex";
+    hideOnIframe.style.display = "none";
+  }
 };
 
 window.onload = initTodo();
