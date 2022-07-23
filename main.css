@@ -279,3 +279,36 @@ form button[type="submit"] {
     font-size: 1.1rem;
     width: 100%;
 }
+
+#hide-on-iframe,
+#show-on-iframe {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+}
+
+#show-on-iframe {
+    display: none;
+}
+
+#hide-on-iframe a,
+#show-on-iframe button {
+    display: flex;
+    align-items: center;
+    background-color: #ececec;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    cursor: pointer;
+}
+
+#hide-on-iframe svg {
+    margin-right: 5px;
+}
+
+#show-on-iframe button {
+    outline: none;
+    border: none;
+}

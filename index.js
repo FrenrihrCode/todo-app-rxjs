@@ -2,9 +2,6 @@ import Todo from "./todo.js";
 
 const { range, filter, fromEvent, of } = rxjs;
 
-let todoAddSubscription;
-let todoModalToggle;
-
 const todoForm = document.getElementById("todo-form");
 const taskMessageInput = document.getElementById("task-message");
 const taskTagInput = document.getElementById("task-tag");
@@ -27,14 +24,14 @@ const initTodo = () => {
   const todo = new Todo();
   setCurrentDate();
 
-  todoModalToggle = fromEvent(
+  let todoModalToggle = fromEvent(
     document.getElementById("todo-add"),
     "click"
   ).subscribe((_) => {
     todoForm.classList.toggle("open");
   });
 
-  todoAddSubscription = fromEvent(
+  let todoAddSubscription = fromEvent(
     document.getElementById("todo-form"),
     "submit"
   ).subscribe((e) => {
@@ -46,12 +43,14 @@ const initTodo = () => {
       todoForm.classList.toggle("open");
     }
   });
-};
 
-const finishTodo = () => {
-  if (todoAddSubscription) {
-    todoAddSubscription.unsubscribe();
-  }
+  let sendMessageToParent = fromEvent(
+    document.getElementById("send-message-btn"),
+    "click"
+  ).subscribe((_) => {
+    console.log("Enviando mensaje");
+    window.parent.postMessage("Hello World from iframe", "*");
+  });
 };
 
 window.onload = initTodo();
