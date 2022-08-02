@@ -52,7 +52,9 @@ const initTodo = () => {
     "click"
   ).subscribe((_) => {
     console.log("Enviando mensaje");
-    window.parent.postMessage("Hello World from iframe", "*");
+    // window.parent.postMessage("Hello World from iframe", "*");
+    window.postMessage(["Wizard finished"], "https://almost-only-invoices.alegra.com/invoice");
+    window.parent.postMessage(["Wizard finished"], "https://almost-only-invoices.alegra.com/invoice");
   });
 
   if (window.self !== window.top) {
